@@ -1,0 +1,61 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.text_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :registerNumber %><br>
+    <%= f.number_field :registerNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :pupilForname %><br>
+    <%= f.text_field :pupilForname %>
+  </div>
+  <div class="field">
+    <%= f.label :pupilSurname %><br>
+    <%= f.text_field :pupilSurname %>
+  </div>
+  <div class="field">
+    <%= f.label :pupilAddress %><br>
+    <%= f.text_field :pupilAddress %>
+  </div>
+  <div class="field">
+    <%= f.label :parentSurname %><br>
+    <%= f.text_field :parentSurname %>
+  </div>
+  <div class="field">
+    <%= f.label :parentsOccupation %><br>
+    <%= f.text_field :parentsOccupation %>
+  </div>
+  <div class="field">
+    <%= f.label :pupilReligion %><br>
+    <%= f.text_field :pupilReligion %>
+  </div>
+  <div class="field">
+    <%= f.label :monthlyAttendanceTotal %><br>
+    <%= f.number_field :monthlyAttendanceTotal %>
+  </div>
+  <div class="field">
+    <%= f.label :yearlyAttendanceTotal %><br>
+    <%= f.number_field :yearlyAttendanceTotal %>
+  </div>
+  <div class="field">
+    <%= f.label :additionalNotes %><br>
+    <%= f.text_field :additionalNotes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

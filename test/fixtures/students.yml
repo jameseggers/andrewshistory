@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1.5
+  registerNumber: 1
+  pupilForname: MyString
+  pupilSurname: MyString
+  pupilAddress: MyString
+  parentSurname: MyString
+  parentsOccupation: MyString
+  pupilReligion: MyString
+  monthlyAttendanceTotal: 1
+  yearlyAttendanceTotal: 1
+  additionalNotes: MyString
+
+two:
+  age: 1.5
+  registerNumber: 1
+  pupilForname: MyString
+  pupilSurname: MyString
+  pupilAddress: MyString
+  parentSurname: MyString
+  parentsOccupation: MyString
+  pupilReligion: MyString
+  monthlyAttendanceTotal: 1
+  yearlyAttendanceTotal: 1
+  additionalNotes: MyString

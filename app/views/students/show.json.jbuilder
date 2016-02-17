@@ -1,0 +1,1 @@
+json.extract! @student, :id, :age, :registerNumber, :pupilForname, :pupilSurname, :pupilAddress, :parentSurname, :parentsOccupation, :pupilReligion, :monthlyAttendanceTotal, :yearlyAttendanceTotal, :additionalNotes, :created_at, :updated_at
