@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+   	render json: Student.where(student_params)
   end
 
   # GET /students/1
@@ -69,6 +69,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:age, :registerNumber, :pupilForname, :pupilSurname, :pupilAddress, :parentSurname, :parentsOccupation, :pupilReligion, :monthlyAttendanceTotal, :yearlyAttendanceTotal, :additionalNotes)
+      params.permit(:age, :registerNumber, :pupilForname, :pupilSurname, :pupilAddress, :parentSurname, :parentsOccupation, :pupilReligion, :monthlyAttendanceTotal, :yearlyAttendanceTotal, :additionalNotes)
     end
 end
