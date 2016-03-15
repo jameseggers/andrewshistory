@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Andrews History Project</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		
+		<!--
+		Below are links to the the bootstrap content delivery network -
+		makes Bootstrap work
+	-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="search.css" />
+	
+		
+	<!-- Responsive table files -  found @ http://gergeo.se/RWD-Table-Patterns/ -->
+	<link rel="stylesheet" href="css/rwd-table.min.css">
+	<script type="text/javascript" src="js/rwd-table.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$("#search").click(function() {
+				$(".container-fluid #tb").empty();  // sample function to clear out child elements <-- how table should work
+				
+				$(".container-fluid #tb tr").empty(); // may not be necessary if we start with empty part lower
+				$(".container-fluid #tb td").empty();		// but we need to clear the table if search has alreeady been made
+				
+				$(".container-fluid #tb").append("<tr class=\"red\"><td data-priority=\"1\">New Data</td><td data-priority=\"2\">new</td><td data-priority=\"3\">new</td><td data-priority=\"1\">new</td><td data-priority=\"3\">new</td><td data-priority=\"5\">n/a</td><td data-priority=\"5\">Joe</td><td data-priority=\"5\">Mary</td><td data-priority=\"5\">6</td><td data-priority=\"6\">n/a</td></tr>");
+				$(".container-fluid #tb").append("<tr class=\"blue\"><td data-priority=\"1\">New Data2</td><td data-priority=\"2\">new2</td><td data-priority=\"3\">new2</td><td data-priority=\"1\">new</td><td data-priority=\"3\">new</td><td data-priority=\"5\">n/a</td><td data-priority=\"5\">Joe2</td><td data-priority=\"5\">Mary2</td><td data-priority=\"5\">6</td><td data-priority=\"6\">n/a</td></tr>");
+				$(".container-fluid #tb").append("<tr class=\"red\"><td data-priority=\"1\">New Data3</td><td data-priority=\"2\">new3</td><td data-priority=\"3\">new3</td><td data-priority=\"1\">new</td><td data-priority=\"3\">new</td><td data-priority=\"5\">n/a</td><td data-priority=\"5\">Joe</td><td data-priority=\"5\">Mary</td><td data-priority=\"5\">6</td><td data-priority=\"6\">n/a</td></tr>");
+				$(".container-fluid #tb").append("<tr class=\"blue\"><td data-priority=\"1\">New Data4</td><td data-priority=\"2\">new4</td><td data-priority=\"3\">new4</td><td data-priority=\"1\">new</td><td data-priority=\"3\">new</td><td data-priority=\"5\">n/a</td><td data-priority=\"5\">Joe2</td><td data-priority=\"5\">Mary2</td><td data-priority=\"5\">6</td><td data-priority=\"6\">n/a</td></tr>");
+				
+			});
+		});
+		
+	</script>
+	
+	<!-- Responsive table files -->
+	<link rel="stylesheet" href="css/rwd-table.min.css">
+	<script type="text/javascript" src="js/rwd-table.js"></script>
+		
+	</head>
+	<body>
+	
+		<script>
+		var arr = [];
+		arr=["Surname","Days Missed","Age"];
+		var count=0;
+		
+		function checkIfAddAllowed(){
+			if(count<3){ //this allows only up to 3 extra search boxes on the page
+				count++;
+				addInput();
+				
+			}
+		}
+		
+	
+	
+		function addInput(){
+			var inputBox=document.createElement("input");
+			inputBox.setAttribute("class","form-control input");
+			var inputDiv=document.getElementById("inputDiv");
+			inputDiv.appendChild(inputBox);
+			
+			var optionTable=document.createElement("select");
+			optionTable.setAttribute("class","form-control");
+			/*
+			var options=document.createElement("option");
+			var text=document.createTextNode("First Name");
+			options.appendChild(text);
+			optionTable.appendChild(options);
+			
+			options=document.createElement("option");
+			text=document.createTextNode("Surname");
+			options.appendChild(text);
+			optionTable.appendChild(options);
+			
+			options=document.createElement("option");
+			text=document.createTextNode("Days Missed");
+			options.appendChild(text);
+			optionTable.appendChild(options);
+			
+			options=document.createElement("option");
+			text=document.createTextNode("Age");
+			options.appendChild(text);
+			optionTable.appendChild(options);
+			
+			*/
+			var options;
+			var text;
+			for(i=0;i<arr.length;i++){
+				options=document.createElement("option");
+				text=document.createTextNode(arr[i]);
+				options.appendChild(text);
+				optionTable.appendChild(options);
+			}
+			
+			remove(arr,arr[0]);
+			
+
+			
+			inputDiv.appendChild(optionTable);
+			
+			if(count<3){
+				var lineSpace=document.createElement("br");
+				inputDiv.appendChild(lineSpace);
+			}
+			
+			alert(arr+arrayCount);
+		}
+		
+		function remove(arr, item) {
+			for(i=0;i<arr.length;i++) {
+				if(arr[i] == item) {
+					arr.splice(i, 1);
+				}
+			}
+		}
+		
+	
+	</script>
+	
+	
+	
+	
+		<div id="pic">
+			<div id="mask">
+				<div id="txt">
+					<h1>Search the St Andrews School Records</h1>
+					<div class="container-fluid">
+						<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inputDiv">
+							<button type="button" class="btn btn-default" onclick="checkIfAddAllowed()" id="addSearch">Add Search Criterion</button>
+							<input class="form-control input"></input>
+							<select class="form-control" id="sel1">
+								<option>First Name</option>
+								<option>Surname</option>
+								<option>Days Missed</option>
+								<option>Age</option>
+							</select>
+				
+							<br />
+						</div> <!-- end #inputId  -->
+						<button type="button" class="btn btn-default" onclick="addTable()" id="search">Search</button>
+					</div>
+				</div>
+			</div>
+			
+	    </div> <!-- end #pic -->
+		
+		<div class="container-fluid">
+			<div class="table-responsive" data-pattern="priority-columns" data-add-focus-btn="false" data-addDisplayAllBtn="true"
+			data-stickyTableHeader="true" id="tableSection">
+				<table class="table table-small-font table-bordered table-striped">
+					<thead> <!-- thead labels the following columns  -->
+					
+						<th data-priority="1">Name</th> <!-- th is the name individual attributes of the students;name,age etc. -->
+						<th data-priority="2">Age</th>
+						<th data-priority="3">Town</th>
+						<th data-priority="1">Days missed</th> <!-- data-priority with a low value means it is prioritised to display when there is little space -->
+						<th data-priority="3">Register Number</th>
+						<th data-priority="5">Religion</th>
+						<th data-priority="5">Father's Name</th>
+						<th data-priority="5">Mother's Name</th>
+						<th data-priority="5">No. of Siblings</th>
+						<th data-priority="6">Other Info</th> <!-- data-priority with a high value means only show when there is enough space -->
+					
+					</thead>
+				
+					<tbody id="tb"><!-- Each tr will represent 1 student --><!-- Each td will hold the data of one of the students attributes -->
+						<!-- <tr class="blue"> 
+							<td data-priority="1">Jack Evans</td> 
+							<td data-priority="2">11.3</td>
+							<td data-priority="3">Ringsend</td>
+							<td data-priority="1">11</td>
+							<td data-priority="3">1789</td>
+							<td data-priority="5">n/a</td>
+							<td data-priority="5">Joe</td>
+							<td data-priority="5">Mary</td>
+							<td data-priority="5">6</td>
+							<td data-priority="6">n/a</td>
+						</tr>
+						<tr class="red">
+							<td data-priority="1">Stephen Reid</td>
+							<td data-priority="2">12.5</td>
+							<td data-priority="3">Irishtown</td>
+							<td data-priority="1">6</td>
+							<td data-priority="3">1331</td>
+							<td data-priority="5">n/a</td>
+							<td data-priority="5">Declan</td>
+							<td data-priority="5">Mary</td>
+							<td data-priority="5">8</td>
+							<td data-priority="6">n/a</td>
+						</tr>
+						<tr>
+							<td data-priority="1">Robert Sullivan</td>
+							<td data-priority="2">10.9</td>
+							<td data-priority="3">North Wall</td>
+							<td data-priority="1">14</td>
+							<td data-priority="3">1481</td>
+							<td data-priority="5">n/a</td>
+							<td data-priority="5">John</td>
+							<td data-priority="5">Bernadette</td>
+							<td data-priority="5">12</td>
+							<td data-priority="6">n/a</td>
+						</tr>
+						<tr>
+							<td data-priority="1">Jason O'Reilly</td>
+							<td data-priority="2">11.2</td>
+							<td data-priority="3">Merchants Quay</td>
+							<td data-priority="1">8</td>
+							<td data-priority="3">1151</td>
+							<td data-priority="5">n/a</td>
+							<td data-priority="5">Sean</td>
+							<td data-priority="5">Mary</td>
+							<td data-priority="5">5</td>
+							<td data-priority="6">n/a</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div> <!-- end .table-responsive -->
+			
+		
+	</body>
