@@ -3,9 +3,13 @@ namespace :import do
 	task :data => :environment do
 		require 'pg'
 		require 'csv'
+		if ARGV.length!=2
+			puts "Usage: rake import:data <filepath>"
+			exit
+		end
 		k = 0;
 		con = PG.connect :dbname => 'andrewshistory_development', :user => 'ben'
-		CSV.foreach('/home/ben/Desktop/rollbook.csv') do |row|
+		CSV.foreach(ARGV[1]) do |row|
 			string = ""
 			columnString = ""
 			row[0] = k.to_s
