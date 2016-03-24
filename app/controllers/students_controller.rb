@@ -4,7 +4,13 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-   	render json: Student.where(student_params)
+    filter_params = student_params
+    filter_params.except! :pupilForname unless filter_params[:pupilForname].length > 0
+    filter_params.except! :pupilSurname unless filter_params[:pupilSurname].length > 0
+    filter_params.except! :age unless filter_params[:age].length > 0
+    filter_params.except! :registerNumber unless filter_params[:registerNumber].length > 0
+
+   	render json: Student.where(filter_params)
   end
 
   # GET /students/1

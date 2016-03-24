@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :students
+  #resources :students
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'site#index'
   get '/students' => "students#index"
+  get "/students/search" => "site#search"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

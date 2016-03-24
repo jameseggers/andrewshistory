@@ -8,7 +8,7 @@ namespace :import do
 			exit
 		end
 		k = 0;
-		con = PG.connect :dbname => 'andrewshistory_development', :user => 'ben'
+		con = PG.connect :dbname => 'andrewshistory_development', :user => 'jameseggers'
 		CSV.foreach(ARGV[1]) do |row|
 			string = ""
 			columnString = ""
@@ -26,36 +26,36 @@ namespace :import do
 					row[i].gsub!('\'', '’')
 					string = string + "'" + row[i] + "',"
 					case i
-					when 0 
+					when 0
 						columnString = columnString + "id,"
-					when 1 
+					when 1
 						columnString = columnString + "age,"
-					when 2 
+					when 2
 						columnString = columnString + "registerNumber,"
-					when 3 
+					when 3
 						columnString = columnString + "pupilForname,"
-					when 4 
+					when 4
 						columnString = columnString + "pupilSurname,"
-					when 5 
+					when 5
 						columnString = columnString + "pupilAddress,"
-					when 6 
+					when 6
 						columnString = columnString + "parentSurname,"
-					when 7 
+					when 7
 						columnString = columnString + "parentsOccupation,"
-					when 8 
+					when 8
 						columnString = columnString + "pupilReligion,"
-					when 9 
+					when 9
 						columnString = columnString + "monthlyAttendanceTotal,"
-					when 10 
+					when 10
 						columnString = columnString + "yearlyAttendanceTotal,"
 					when 11
 					 	columnString = columnString + "additionalNotes,"
-					when 12 
+					when 12
 						columnString = columnString + "created_at,"
-					when 13 
+					when 13
 						columnString = columnString + "updated_at,"
 					end
-							
+
 				end
 
 			end

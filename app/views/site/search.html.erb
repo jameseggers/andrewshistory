@@ -1,0 +1,38 @@
+<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#pupilSearch').submit(function(e) {
+      $.getJSON('https://andrewshistory.herokuapp.com/students',
+      {
+        pupilForname: $('input[name=pupilForname]').val(),
+        pupilSurname: $('input[name=pupilSurname]').val(),
+        age: $('input[name=age]').val(),
+        registerNumber: $('input[name=registerNumber]').val(),
+      },
+      function(data) {
+        var table = $('<table id="dataTable"> </table>');
+        table.append("<tr> <th> Student Name </th> <th> Address </th> <th> Age </th> <th> Register Number </th></tr>");
+        var items = [];
+        $.each( data, function(key, student ) {
+          table.append("<tr><td>" + student["pupilForname"] + "</td><td>"+student['pupilAddress']+"</td><td> "+student['age']+"</td><td>"+student['registerNumber']+"</td></tr>");
+        });
+        $("#dataTable").replaceWith(table);
+      }
+    );
+
+
+      e.preventDefault();
+    });
+  });
+</script>
+
+<form method="get" id="pupilSearch">
+	<input type='text' name="pupilForname" placeholder="First Name"/>
+	<input type="text" name="pupilSurname" placeholder="Second Name"/>
+	<input type="number" name="age" placeholder="Age"/>
+	<input type="number" name="registerNumber" placeholder="Register Number"/>
+  <input type="submit" value="Submit lol" />
+</form>
+
+<table id="dataTable"> </table>
