@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $('section#search input').change (e) ->
+  $('section#search input').on('keyup', (e) ->
     $.getJSON 'http://andrewshistory.dev/students', {
       pupilForname: $('input[name=pupilForname]').val()
       pupilSurname: $('input[name=pupilSurname]').val()
@@ -17,7 +17,7 @@ $(document).ready ->
       $.each data, (key, student) ->
         dataString = '<tr><td>' + student['pupilForname'] +
                      '</td><td> '+student['pupilSurname'] +
-                     '</td><td>' + student['pupilAddress'] +
+                     '</td><td><a href="http://maps.google.com/?q=' + student['pupilAddress'] + ',Ireland" target="_blank"> ' + student['pupilAddress'] + '</a>' +
                      '</td><td>' + student['pupilReligion'] +
                      '</td><td> ' + student['age'] +
                      '</td><td>' + student['registerNumber'] +
@@ -31,6 +31,7 @@ $(document).ready ->
       return
     e.preventDefault()
     return
+    )
   return
 
 # ---
