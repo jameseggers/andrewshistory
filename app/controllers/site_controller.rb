@@ -4,6 +4,6 @@ class SiteController < ApplicationController
   end
 
   def search
-    render action: 'search', layout: false
+    render action: 'search'
   end
 end

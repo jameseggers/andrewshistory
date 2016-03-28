@@ -10,12 +10,19 @@ class StudentsController < ApplicationController
     filter_params.except! :age unless filter_params[:age].length > 0
     filter_params.except! :registerNumber unless filter_params[:registerNumber].length > 0
 
-   	render json: Student.where(filter_params)
+    if filter_params[:address].length > 0
+      students = Student.where(filter_params.except(:address)).where("to_tsvector('english', \"pupilAddress\") @@ plainto_tsquery('english', '#{filter_params[:address]}')")
+    else
+      students = Student.where(filter_params.except(:address))
+    end
+
+    render json: students
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    render json: Student.find(params[:id])
   end
 
   # GET /students/new
@@ -75,6 +82,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.permit(:age, :registerNumber, :pupilForname, :pupilSurname, :pupilAddress, :parentSurname, :parentsOccupation, :pupilReligion, :monthlyAttendanceTotal, :yearlyAttendanceTotal, :additionalNotes)
+      params.permit(:age, :registerNumber, :pupilForname, :pupilSurname, :pupilAddress, :parentSurname, :parentsOccupation, :pupilReligion, :monthlyAttendanceTotal, :yearlyAttendanceTotal, :additionalNotes, :address)
     end
 end

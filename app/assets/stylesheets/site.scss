@@ -3,3 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'bootstrap';
+
+section#search {
+  input {
+    height: 40px;
+    color: #000;
+  }
+}
