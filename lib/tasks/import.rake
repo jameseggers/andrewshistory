@@ -8,7 +8,7 @@ namespace :import do
 			exit
 		end
 		k = 0;
-		con = PG.connect :dbname => "andrewshistory_development", :user => "jameseggers"
+		con = PG.connect :dbname => "andrewshistory_production", :user => "ben"
 		counter = 0
 		CSV.foreach(ARGV[1]) do |row|
 			if counter > 0
