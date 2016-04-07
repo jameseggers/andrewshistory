@@ -1,28 +1,20 @@
-== README
+== README for St Andrews History Project, CS2013 Group 13
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Read this before editing source code.
 
-Things you may want to cover:
+* Name of Client: <james>
 
-* Ruby version
+* Contact Details of Client: <james>
 
-* System dependencies
+* Developers: Ammar Qureshi, Ben Stratford, Sam Hristov, Brian de Buiteach
 
-* Configuration
+* Project Managers: James Eggers, Erik Eviston
 
-* Database creation
+* Technologies Used: Ruby on Rails, JQuery, Html, Css, PostgreSQL, Bootstrap
 
-* Database initialization
+* Ruby version: ruby 2.2.1p85 
 
-* How to run the test suite
+* How to Use: Hosted on http://andrewshistory.herokuapp.com 
 
-* Services (job queues, cache servers, search engines, etc.)
+* Heroku Login Details: username:benstratford586@gmail.com  password:andrewshistory
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
