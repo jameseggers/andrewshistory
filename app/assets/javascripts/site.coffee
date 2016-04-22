@@ -4,7 +4,7 @@
 
 $(document).ready ->
   $('section#search input').on('keyup', (e) ->
-    $.getJSON 'http://andrewshistory.dev/students', {
+    $.getJSON 'http://andrewshistory.herokuapp.com/students', {
       pupilForname: $('input[name=pupilForname]').val()
       pupilSurname: $('input[name=pupilSurname]').val()
       address: $('input[name=address]').val()
