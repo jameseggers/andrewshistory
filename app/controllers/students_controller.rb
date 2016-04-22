@@ -5,16 +5,17 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     filter_params = student_params
-    filter_params.except! :pupilForname unless filter_params[:pupilForname].length > 0
-    filter_params.except! :pupilSurname unless filter_params[:pupilSurname].length > 0
     filter_params.except! :age unless filter_params[:age].length > 0
     filter_params.except! :registerNumber unless filter_params[:registerNumber].length > 0
 
     if filter_params[:address].length > 0
-      students = Student.where(filter_params.except(:address)).where("to_tsvector('english', \"pupilAddress\") @@ plainto_tsquery('english', '#{filter_params[:address]}')")
+      students = Student.where(filter_params.except(:address, :pupilForname, :pupilSurname)).where("to_tsvector('english', \"pupilAddress\") @@ plainto_tsquery('english', '#{filter_params[:address]}')")
     else
-      students = Student.where(filter_params.except(:address))
+      students = Student.where(filter_params.except(:address, :pupilForname, :pupilSurname))
     end
+    t = Student.arel_table
+    students = students.where(t[:pupilForname].matches(filter_params[:pupilForname])) if filter_params[:pupilForname].length > 0
+    students = students.where(t[:pupilSurname].matches(filter_params[:pupilSurname])) if filter_params[:pupilSurname].length > 0
 
     render json: students
   end
